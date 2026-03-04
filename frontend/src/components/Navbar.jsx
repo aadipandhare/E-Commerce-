@@ -2,10 +2,13 @@ import React,{useState, useContext} from 'react'
 import {assets} from '../assets/assets.js'
 import {NavLink,Link} from 'react-router'
 import { ShopContext } from '../context/ShopContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
     const [visible, setVisible] = useState(false);
     const {setShowSearch, getCartCount} = useContext(ShopContext);
+
+    const navigate = useNavigate();
 
   return (
     // <div className='flex item-center justify-between py-5 font-medium'>
@@ -47,7 +50,7 @@ export const Navbar = () => {
             <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
                     <p className='cursor-pointer hover:text-black'>My Profile</p>
-                    <p className='cursor-pointer hover:text-black'>Orders</p>
+                    <p onClick={()=>navigate('/order')}className='cursor-pointer hover:text-black'>Orders</p>
                     <p className='cursor-pointer hover:text-black'>Logout</p>
                 </div>
             </div>
